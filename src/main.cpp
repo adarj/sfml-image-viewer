@@ -5,11 +5,18 @@
  */
 
 #include "window.h"
+#include <string>
 
 int main(int argc, char const* argv[])
 {
     Window window;
-    window.create();
+
+    if (argc > 1) {
+        std::string filename = argv[1];
+        window.create(filename);
+    } else {
+        window.create();
+    }
 
     return 0;
 }

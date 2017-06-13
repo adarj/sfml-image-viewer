@@ -12,12 +12,17 @@
 class Window {
 public:
     void create();
+    void create(std::string filename);
 
 private:
+    void load();
     void init();
     void draw();
 
     sf::RenderWindow window;
+    sf::Texture texture;
+    sf::Sprite sprite;
+    std::string filename;
 };
 
 #endif

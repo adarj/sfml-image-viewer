@@ -5,11 +5,31 @@
  */
 
 #include "window.h"
+#include <iostream>
 
 void Window::create()
 {
+    this->filename = "";
+
     init();
     draw();
+}
+
+void Window::create(std::string filename)
+{
+    this->filename = filename;
+
+    load();
+    init();
+    draw();
+}
+
+void Window::load()
+{
+    if (!texture.loadFromFile(filename)) {
+        std::cout << "Error: file does not exist" << std::endl;
+    }
+    sprite.setTexture(texture);
 }
 
 void Window::init()
@@ -28,6 +48,7 @@ void Window::draw()
         }
 
         window.clear();
+        window.draw(sprite);
         window.display();
     }
 }
