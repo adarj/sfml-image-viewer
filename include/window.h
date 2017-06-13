@@ -17,6 +17,7 @@ public:
 private:
     void load();
     void init();
+    void checkEvents();
     void draw();
 
     void getLetterboxView();
