@@ -29,6 +29,7 @@ void Window::load()
     if (!texture.loadFromFile(filename)) {
         std::cout << "Error: file does not exist" << std::endl;
     }
+    texture.setSmooth(true);
     sprite.setTexture(texture);
 }
 
@@ -36,7 +37,7 @@ void Window::init()
 {
     window.create(sf::VideoMode(640, 480), "SFML Image Viewer");
 
-    // Scale view to the size of the image
+    // Initialize view
     view.reset(sf::FloatRect(
         0,
         0,
@@ -52,6 +53,9 @@ void Window::draw()
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
+            if (event.type == sf::Event::Resized) {
+                getLetterboxView();
+            }
         }
 
         window.clear();
@@ -59,4 +63,27 @@ void Window::draw()
         window.draw(sprite);
         window.display();
     }
+}
+
+void Window::getLetterboxView()
+{
+    float windowRatio = window.getSize().x / static_cast<float>(window.getSize().y);
+    float viewRatio = view.getSize().x / static_cast<float>(view.getSize().y);
+
+    sf::Vector2f size;
+    sf::Vector2f pos;
+
+    if (windowRatio > viewRatio) {
+        size.x = viewRatio / windowRatio;
+        pos.x = (1 - size.x) / 2.f;
+        size.y = 1;
+        pos.y = 0;
+    } else {
+        size.y = windowRatio / viewRatio;
+        pos.y = (1 - size.y) / 2.f;
+        size.x = 1;
+        pos.x = 0;
+    }
+
+    view.setViewport(sf::FloatRect(pos.x, pos.y, size.x, size.y));
 }

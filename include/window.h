@@ -19,6 +19,8 @@ private:
     void init();
     void draw();
 
+    void getLetterboxView();
+
     sf::RenderWindow window;
     sf::View view;
     sf::Texture texture;
