@@ -6,10 +6,19 @@
 
 #include "window.h"
 
+void Window::create()
+{
+    init();
+    draw();
+}
+
 void Window::init()
 {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "SFML Image Viewer");
+    window.create(sf::VideoMode(640, 480), "SFML Image Viewer");
+}
 
+void Window::draw()
+{
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {

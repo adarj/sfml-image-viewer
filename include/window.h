@@ -11,7 +11,13 @@
 
 class Window {
 public:
+    void create();
+
+private:
     void init();
+    void draw();
+
+    sf::RenderWindow window;
 };
 
 #endif

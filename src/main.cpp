@@ -9,7 +9,7 @@
 int main(int argc, char const* argv[])
 {
     Window window;
-    window.init();
+    window.create();
 
     return 0;
 }
