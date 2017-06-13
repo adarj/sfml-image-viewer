@@ -7,7 +7,7 @@ file (GLOB SOURCES "src/*.cpp" "include/*.h")
 set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 # Create binary
-set (EXECUTABLE_NAME "sfml-image-viewer")
+set (EXECUTABLE_NAME "sfiv")
 add_executable (${EXECUTABLE_NAME} ${SOURCES})
 
 # Setup SFML
