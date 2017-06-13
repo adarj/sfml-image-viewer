@@ -35,6 +35,13 @@ void Window::load()
 void Window::init()
 {
     window.create(sf::VideoMode(640, 480), "SFML Image Viewer");
+
+    // Scale view to the size of the image
+    view.reset(sf::FloatRect(
+        0,
+        0,
+        static_cast<float>(texture.getSize().x),
+        static_cast<float>(texture.getSize().y)));
 }
 
 void Window::draw()
@@ -48,6 +55,7 @@ void Window::draw()
         }
 
         window.clear();
+        window.setView(view);
         window.draw(sprite);
         window.display();
     }

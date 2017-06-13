@@ -20,6 +20,7 @@ private:
     void draw();
 
     sf::RenderWindow window;
+    sf::View view;
     sf::Texture texture;
     sf::Sprite sprite;
     std::string filename;
