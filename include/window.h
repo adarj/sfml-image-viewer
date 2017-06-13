@@ -4,12 +4,14 @@
  * See accompanying file LICENSE.md or copy at http://opensource.org/licenses/MIT
  */
 
-#include "window.h"
+#ifndef WINDOW_H
+#define WINDOW_H
 
-int main(int argc, char const* argv[])
-{
-    Window window;
-    window.init();
+#include <SFML/Graphics.hpp>
 
-    return 0;
-}
+class Window {
+public:
+    void init();
+};
+
+#endif
