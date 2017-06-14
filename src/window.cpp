@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <exception>
 
-Window::Window(std::string filename)
+Window::Window(std::string& filename)
 {
     this->filename = filename;
 
