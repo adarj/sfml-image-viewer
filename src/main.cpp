@@ -10,11 +10,9 @@
 
 int main(int argc, char const* argv[])
 {
-    Window window;
-
     if (argc > 1) {
         std::string filename = argv[1];
-        window.create(filename);
+        Window window(filename);
     } else {
         std::cout << "SFML Image Viewer (c) 2017" << std::endl;
         std::cout << std::endl;

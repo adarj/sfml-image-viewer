@@ -7,15 +7,7 @@
 #include "window.h"
 #include <iostream>
 
-void Window::create()
-{
-    this->filename = "";
-
-    init();
-    draw();
-}
-
-void Window::create(std::string filename)
+Window::Window(std::string filename)
 {
     this->filename = filename;
 

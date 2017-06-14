@@ -11,8 +11,7 @@
 
 class Window {
 public:
-    void create();
-    void create(std::string filename);
+    Window(std::string filename);
 
 private:
     void load();
