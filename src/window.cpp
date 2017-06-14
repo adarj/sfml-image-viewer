@@ -5,6 +5,7 @@
  */
 
 #include "window.h"
+#include <SFML/Graphics.hpp>
 #include <exception>
 
 Window::Window(std::string filename)
