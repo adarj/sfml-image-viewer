@@ -49,11 +49,22 @@ void Window::checkEvents()
 {
     sf::Event event;
     while (window.pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
+        switch (event.type) {
+        case sf::Event::EventType::Closed:
             window.close();
-        }
-        if (event.type == sf::Event::Resized) {
+            break;
+
+        case sf::Event::EventType::Resized:
             getLetterboxView();
+            break;
+
+        case sf::Event::KeyPressed:
+            if (event.key.code == sf::Keyboard::Q) {
+                window.close();
+            }
+
+        default:
+            break;
         }
     }
 }
