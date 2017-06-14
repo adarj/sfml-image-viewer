@@ -5,7 +5,7 @@
  */
 
 #include "window.h"
-#include <iostream>
+#include <exception>
 
 Window::Window(std::string filename)
 {
@@ -19,7 +19,7 @@ Window::Window(std::string filename)
 void Window::load()
 {
     if (!texture.loadFromFile(filename)) {
-        std::cout << "Error: file does not exist" << std::endl;
+        throw std::runtime_error("Error: Image not found");
     }
     texture.setSmooth(true);
     sprite.setTexture(texture);
