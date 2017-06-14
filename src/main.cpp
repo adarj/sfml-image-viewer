@@ -5,6 +5,7 @@
  */
 
 #include "window.h"
+#include <iostream>
 #include <string>
 
 int main(int argc, char const* argv[])
@@ -15,7 +16,9 @@ int main(int argc, char const* argv[])
         std::string filename = argv[1];
         window.create(filename);
     } else {
-        window.create();
+        std::cout << "SFML Image Viewer (c) 2017" << std::endl;
+        std::cout << std::endl;
+        std::cout << "Usage: sfiv FILE" << std::endl;
     }
 
     return 0;
