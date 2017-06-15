@@ -68,6 +68,7 @@ void Window::checkEvents()
             if (event.key.code == sf::Keyboard::Q) {
                 window.close();
             }
+            break;
 
         default:
             break;
