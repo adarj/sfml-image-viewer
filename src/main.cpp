@@ -4,26 +4,30 @@
  * See accompanying file LICENSE.md or copy at http://opensource.org/licenses/MIT
  */
 
+#include "cxxopts.hpp"
 #include "window.h"
 #include <exception>
 #include <iostream>
 #include <string>
+#include <utility>
 
-int main(int argc, char const* argv[])
+int main(int argc, char* argv[])
 {
-    if (argc > 1) {
-        std::string filename = argv[1];
+    try {
+        cxxopts::Options options("SFML Image Viewer", "One line description of MyProgram");
+        options.add_options()("f,file", "File", cxxopts::value<std::string>());
 
-        try {
-            Window window(filename);
-        } catch (const std::exception& e) {
-            std::cout << e.what() << std::endl;
+        options.parse_positional("file");
+        options.parse(argc, argv);
+
+        if (options.count("file")) {
+            Window window(std::move(options["file"].as<std::string>()));
         }
 
-    } else {
-        std::cout << "SFML Image Viewer (c) 2017" << std::endl;
-        std::cout << std::endl;
-        std::cout << "Usage: sfiv FILE" << std::endl;
+    } catch (const cxxopts::OptionException& e) {
+        std::cout << "error parsing options: " << e.what() << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << e.what() << std::endl;
     }
 
     return 0;

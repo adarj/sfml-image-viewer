@@ -11,7 +11,7 @@
 
 class Window {
 public:
-    Window(std::string& filename);
+    Window(const std::string&& filename);
 
 private:
     void load();
