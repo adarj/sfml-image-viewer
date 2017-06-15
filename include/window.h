@@ -16,9 +16,9 @@ public:
 private:
     void load();
     void init();
-    void checkEvents();
     void draw();
 
+    void checkEvents();
     void getLetterboxView();
 
     sf::RenderWindow window;

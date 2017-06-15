@@ -39,6 +39,18 @@ void Window::init()
         static_cast<float>(texture.getSize().y)));
 }
 
+void Window::draw()
+{
+    while (window.isOpen()) {
+        checkEvents();
+
+        window.clear();
+        window.setView(view);
+        window.draw(sprite);
+        window.display();
+    }
+}
+
 void Window::checkEvents()
 {
     sf::Event event;
@@ -60,18 +72,6 @@ void Window::checkEvents()
         default:
             break;
         }
-    }
-}
-
-void Window::draw()
-{
-    while (window.isOpen()) {
-        checkEvents();
-
-        window.clear();
-        window.setView(view);
-        window.draw(sprite);
-        window.display();
     }
 }
 
