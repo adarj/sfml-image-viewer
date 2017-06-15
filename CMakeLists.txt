@@ -3,7 +3,7 @@ project (sfml-image-viewer)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/external/cxxopts/include)
-file (GLOB SOURCES "src/*.cpp" "include/*.h" "external/cxxopts/include/cxxopts.hpp")
+file (GLOB SOURCES "src/*.cpp")
 
 set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
