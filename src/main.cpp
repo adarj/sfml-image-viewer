@@ -22,6 +22,7 @@ int main(int argc, char* argv[])
 
         if (options.count("file")) {
             Window window(std::move(options["file"].as<std::string>()));
+            std::cout << std::endl;
         }
 
     } catch (const cxxopts::OptionException& e) {
