@@ -11,6 +11,7 @@
 Window::Window(const std::string&& filename)
 {
     this->filename = filename;
+    this->isFullscreen = false;
 
     load();
     init();
@@ -30,6 +31,7 @@ void Window::init()
 {
     window.create(sf::VideoMode(640, 480), "SFML Image Viewer");
     window.setKeyRepeatEnabled(false);
+    videoMode = sf::VideoMode::getDesktopMode();
 
     // Initialize view
     view.reset(sf::FloatRect(
@@ -68,7 +70,17 @@ void Window::checkEvents()
             if (event.key.code == sf::Keyboard::Q) {
                 window.close();
             }
-            break;
+            if (event.key.code == sf::Keyboard::F) {
+                if (!isFullscreen) {
+                    window.create(sf::VideoMode(videoMode.width, videoMode.height),
+                        "SFML Image Viewer",
+                        sf::Style::Fullscreen);
+                } else {
+                    window.create(sf::VideoMode(640, 480), "SFML Image Viewer");
+                }
+                isFullscreen = !isFullscreen;
+                break;
+            }
 
         default:
             break;

@@ -23,9 +23,11 @@ private:
 
     sf::RenderWindow window;
     sf::View view;
+    sf::VideoMode videoMode;
     sf::Texture texture;
     sf::Sprite sprite;
     std::string filename;
+    bool isFullscreen;
 };
 
 #endif
