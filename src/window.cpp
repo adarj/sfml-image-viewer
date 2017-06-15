@@ -72,9 +72,7 @@ void Window::checkEvents()
             }
             if (event.key.code == sf::Keyboard::F) {
                 if (!isFullscreen) {
-                    window.create(sf::VideoMode(videoMode.width, videoMode.height),
-                        "SFML Image Viewer",
-                        sf::Style::Fullscreen);
+                    window.create(videoMode, "SFML Image Viewer", sf::Style::Fullscreen);
                 } else {
                     window.create(sf::VideoMode(640, 480), "SFML Image Viewer");
                 }
