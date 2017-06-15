@@ -31,7 +31,7 @@ void Window::init()
 {
     window.create(sf::VideoMode(640, 480), "SFML Image Viewer");
     window.setKeyRepeatEnabled(false);
-    videoMode = sf::VideoMode::getDesktopMode();
+    desktop = sf::VideoMode::getDesktopMode();
 
     // Initialize view
     view.reset(sf::FloatRect(
@@ -72,7 +72,7 @@ void Window::checkEvents()
             }
             if (event.key.code == sf::Keyboard::F) {
                 if (!isFullscreen) {
-                    window.create(videoMode, "SFML Image Viewer", sf::Style::Fullscreen);
+                    window.create(desktop, "SFML Image Viewer", sf::Style::Fullscreen);
                 } else {
                     window.create(sf::VideoMode(640, 480), "SFML Image Viewer");
                 }

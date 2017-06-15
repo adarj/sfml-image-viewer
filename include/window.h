@@ -23,7 +23,7 @@ private:
 
     sf::RenderWindow window;
     sf::View view;
-    sf::VideoMode videoMode;
+    sf::VideoMode desktop;
     sf::Texture texture;
     sf::Sprite sprite;
     std::string filename;
