@@ -29,9 +29,11 @@ void Window::load()
 
 void Window::init()
 {
+    desktop = sf::VideoMode::getDesktopMode();
+
     window.create(sf::VideoMode(640, 480), "SFML Image Viewer");
     window.setKeyRepeatEnabled(false);
-    desktop = sf::VideoMode::getDesktopMode();
+    window.setFramerateLimit(60);
 
     // Initialize view
     view.reset(sf::FloatRect(
