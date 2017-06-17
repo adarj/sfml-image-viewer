@@ -8,6 +8,7 @@
 #define WINDOW_H
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 class Window {
 public:
@@ -20,6 +21,7 @@ private:
 
     void checkEvents();
     void getLetterboxView();
+    std::vector<std::string> getFilesInDirectory();
 
     sf::RenderWindow window;
     sf::View view;
@@ -28,6 +30,8 @@ private:
     sf::Sprite sprite;
     std::string filename;
     bool isFullscreen;
+
+    std::vector<std::string> files;
 
     static const int framerate = 60;
 };

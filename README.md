@@ -6,4 +6,5 @@ Simple image viewer created with SFML and C++.
 
 ```
 SFML 2.4
+Boost 1.64
 ```
