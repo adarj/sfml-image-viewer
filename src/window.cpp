@@ -6,7 +6,16 @@
 
 #include "window.h"
 #include <SFML/Graphics.hpp>
+#include <boost/filesystem.hpp>
 #include <exception>
+#include <future>
+
+struct path_leaf_string {
+    std::string operator()(const boost::filesystem::directory_entry& entry) const
+    {
+        return entry.path().leaf().string();
+    }
+};
 
 Window::Window(const std::string&& filename)
 {
@@ -20,11 +29,16 @@ Window::Window(const std::string&& filename)
 
 void Window::load()
 {
+    // Run a seperate thread to get a list of all files in the directory
+    auto f = std::async(&Window::getFilesInDirectory, this);
+
     if (!texture.loadFromFile(filename)) {
         throw std::runtime_error("Error: Image not found");
     }
     texture.setSmooth(true);
     sprite.setTexture(texture);
+
+    files = f.get();
 }
 
 void Window::init()
@@ -109,4 +123,17 @@ void Window::getLetterboxView()
     }
 
     view.setViewport(sf::FloatRect(pos.x, pos.y, size.x, size.y));
+}
+
+std::vector<std::string> Window::getFilesInDirectory()
+{
+    std::vector<std::string> v;
+    auto dir = boost::filesystem::current_path();
+
+    boost::filesystem::path p(dir);
+    boost::filesystem::directory_iterator start(p);
+    boost::filesystem::directory_iterator end;
+    std::transform(start, end, std::back_inserter(v), path_leaf_string());
+
+    return v;
 }
