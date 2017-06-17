@@ -30,7 +30,7 @@ Window::Window(const std::string&& filename)
 void Window::load()
 {
     // Run a seperate thread to get a list of all files in the directory
-    auto f = std::async(&Window::getFilesInDirectory, this);
+    auto f = std::async(std::launch::async, &Window::getFilesInDirectory, this);
 
     if (!texture.loadFromFile(filename)) {
         throw std::runtime_error("Error: Image not found");
