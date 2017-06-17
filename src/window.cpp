@@ -33,7 +33,7 @@ void Window::init()
 
     window.create(sf::VideoMode(640, 480), "SFML Image Viewer");
     window.setKeyRepeatEnabled(false);
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(framerate);
 
     // Initialize view
     view.reset(sf::FloatRect(

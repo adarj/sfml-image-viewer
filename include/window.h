@@ -28,6 +28,8 @@ private:
     sf::Sprite sprite;
     std::string filename;
     bool isFullscreen;
+
+    static const int framerate = 60;
 };
 
 #endif
