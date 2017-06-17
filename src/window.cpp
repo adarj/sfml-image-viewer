@@ -10,7 +10,6 @@
 #include <boost/filesystem.hpp>
 #include <exception>
 #include <future>
-#include <iostream>
 #include <iterator>
 #include <utility>
 
