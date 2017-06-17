@@ -46,6 +46,7 @@ void Window::load()
     }
     texture.setSmooth(true);
     texture.update(image);
+
     sprite.setTexture(texture);
 }
 
@@ -119,7 +120,15 @@ void Window::checkEvents()
                     }
 
                     try {
+                        texture = sf::Texture();
+                        sprite = sf::Sprite();
                         load();
+                        view.reset(sf::FloatRect(
+                            0,
+                            0,
+                            static_cast<float>(texture.getSize().x),
+                            static_cast<float>(texture.getSize().y)));
+                        getLetterboxView();
                     } catch (std::exception& e) {
                         files.erase(std::remove(files.begin(), files.end(), filename), files.end());
                         filename = original;
