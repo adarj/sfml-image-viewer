@@ -37,8 +37,8 @@ void Window::init()
 
     // Initialize view
     view.reset(sf::FloatRect(
-        0,
-        0,
+        0.0f,
+        0.0f,
         static_cast<float>(texture.getSize().x),
         static_cast<float>(texture.getSize().y)));
 }
@@ -98,14 +98,14 @@ void Window::getLetterboxView()
 
     if (windowRatio > viewRatio) {
         size.x = viewRatio / windowRatio;
-        pos.x = (1 - size.x) / 2.f;
-        size.y = 1;
-        pos.y = 0;
+        pos.x = (1.0f - size.x) / 2.0f;
+        size.y = 1.0f;
+        pos.y = 0.0f;
     } else {
         size.y = windowRatio / viewRatio;
-        pos.y = (1 - size.y) / 2.f;
-        size.x = 1;
-        pos.x = 0;
+        pos.y = (1.0f - size.y) / 2.0f;
+        size.x = 1.0f;
+        pos.x = 0.0f;
     }
 
     view.setViewport(sf::FloatRect(pos.x, pos.y, size.x, size.y));
