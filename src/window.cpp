@@ -39,11 +39,11 @@ Window::Window(const std::string&& filename)
 void Window::load()
 {
     sf::Image image;
-    image.loadFromFile(filename);
-
-    if (!texture.loadFromImage(image)) {
+    if (!image.loadFromFile(filename)) {
         throw std::runtime_error("Error: Image not found");
     }
+
+    texture.loadFromImage(image);
     texture.setSmooth(true);
     texture.update(image);
 
